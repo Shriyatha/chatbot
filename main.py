@@ -38,6 +38,8 @@ class TodoChatbot:
                 model="gemini-1.5-flash",
                 google_api_key=google_api_key,
                 temperature=0.3,
+                max_retries=3,
+                request_timeout = 60,
                 max_output_tokens=1000
             )
         except Exception as e:

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "04ee2da0-6eb4-4387-b73f-e1229d95cf8d",
+    "role": "user",
+    "message": "Hello there!",
+    "timestamp": "2025-07-12T17:07:50.538885",
+    "metadata": {
+      "sentiment": "positive"
+    }
+  },
+  {
+    "id": "4c83a953-00c6-4dc0-9a7f-f794bb031f1e",
+    "role": "assistant",
+    "message": "Hi! How can I help?",
+    "timestamp": "2025-07-12T17:07:50.539412",
+    "metadata": {
+      "response_time": 1.2
+    }
+  },
+  {
+    "id": "4ee96c34-6aae-423e-bf89-e05a445f0e1b",
+    "role": "user",
+    "message": "I need help with Python",
+    "timestamp": "2025-07-12T17:07:50.541199",
+    "metadata": {}
+  }
+]

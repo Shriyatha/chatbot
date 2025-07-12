@@ -1,0 +1,17 @@
+{
+  "todos": {
+    "todos": [
+      {
+        "task": "Test task",
+        "priority": "medium",
+        "tags": [],
+        "created": "2025-07-12T17:04:51.540231",
+        "modified": "2025-07-12T17:04:51.540232"
+      }
+    ],
+    "completed": [],
+    "last_updated": "2025-07-12T17:04:51.540233"
+  },
+  "completed": [],
+  "last_updated": "2025-07-12T17:04:51.540252"
+}

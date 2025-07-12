@@ -1,0 +1,84 @@
+[
+  {
+    "id": "4c83a953-00c6-4dc0-9a7f-f794bb031f1e",
+    "role": "assistant",
+    "message": "Hi! How can I help?",
+    "timestamp": "2025-07-12T17:07:50.539412",
+    "metadata": {
+      "response_time": 1.2
+    }
+  },
+  {
+    "id": "4ee96c34-6aae-423e-bf89-e05a445f0e1b",
+    "role": "user",
+    "message": "I need help with Python",
+    "timestamp": "2025-07-12T17:07:50.541199",
+    "metadata": {}
+  },
+  {
+    "id": "619e3afd-385d-413a-bd2b-57620b430558",
+    "role": "user",
+    "message": "Hello there!",
+    "timestamp": "2025-07-12T17:07:58.218547",
+    "metadata": {
+      "sentiment": "positive"
+    }
+  },
+  {
+    "id": "00d36ae6-73d0-4171-b577-e1b69a8f9979",
+    "role": "assistant",
+    "message": "Hi! How can I help?",
+    "timestamp": "2025-07-12T17:07:58.219331",
+    "metadata": {
+      "response_time": 1.2
+    }
+  },
+  {
+    "id": "87539029-ad54-4f4b-aae3-ae5f879f47cd",
+    "role": "user",
+    "message": "I need help with Python",
+    "timestamp": "2025-07-12T17:07:58.221732",
+    "metadata": {}
+  },
+  {
+    "id": "4c83a953-00c6-4dc0-9a7f-f794bb031f1e",
+    "role": "assistant",
+    "message": "Hi! How can I help?",
+    "timestamp": "2025-07-12T17:07:50.539412",
+    "metadata": {
+      "response_time": 1.2
+    }
+  },
+  {
+    "id": "4ee96c34-6aae-423e-bf89-e05a445f0e1b",
+    "role": "user",
+    "message": "I need help with Python",
+    "timestamp": "2025-07-12T17:07:50.541199",
+    "metadata": {}
+  },
+  {
+    "id": "619e3afd-385d-413a-bd2b-57620b430558",
+    "role": "user",
+    "message": "Hello there!",
+    "timestamp": "2025-07-12T17:07:58.218547",
+    "metadata": {
+      "sentiment": "positive"
+    }
+  },
+  {
+    "id": "00d36ae6-73d0-4171-b577-e1b69a8f9979",
+    "role": "assistant",
+    "message": "Hi! How can I help?",
+    "timestamp": "2025-07-12T17:07:58.219331",
+    "metadata": {
+      "response_time": 1.2
+    }
+  },
+  {
+    "id": "87539029-ad54-4f4b-aae3-ae5f879f47cd",
+    "role": "user",
+    "message": "I need help with Python",
+    "timestamp": "2025-07-12T17:07:58.221732",
+    "metadata": {}
+  }
+]

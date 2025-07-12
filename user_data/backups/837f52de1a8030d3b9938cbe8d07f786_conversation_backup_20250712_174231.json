@@ -1,0 +1,93 @@
+[
+  {
+    "id": "fa84e22a-cc9e-48c0-9fba-42fb849271c3",
+    "role": "user",
+    "message": "Add buy groceries to my list",
+    "timestamp": "2025-07-12T17:36:41.341586",
+    "metadata": {}
+  },
+  {
+    "id": "5e25aee2-d282-46d8-9168-ec25724930da",
+    "role": "assistant",
+    "message": "Perfect! I've added \"buy groceries\" to your to-do list.  Is there anything else I can help you with today?",
+    "timestamp": "2025-07-12T17:36:41.344171",
+    "metadata": {}
+  },
+  {
+    "id": "bf2433e7-aafc-41b8-8d64-abf45a87c05b",
+    "role": "user",
+    "message": "What's on my to-do list?",
+    "timestamp": "2025-07-12T17:37:24.102697",
+    "metadata": {}
+  },
+  {
+    "id": "d915d555-00fa-40f7-93b3-e49c44dfa40c",
+    "role": "assistant",
+    "message": "Here's your to-do list,  it currently contains:\n\n1. buy groceries (Priority: medium)",
+    "timestamp": "2025-07-12T17:37:24.106281",
+    "metadata": {}
+  },
+  {
+    "id": "4aadb08e-7f3c-4124-9e37-7ae346d4cb44",
+    "role": "user",
+    "message": "What's on my to-do list?",
+    "timestamp": "2025-07-12T17:40:59.071278",
+    "metadata": {}
+  },
+  {
+    "id": "5ce04f85-8923-445f-9f67-3e5caefd50f5",
+    "role": "assistant",
+    "message": "Here's your to-do list:\n\n1. buy groceries (Priority: medium)",
+    "timestamp": "2025-07-12T17:40:59.074129",
+    "metadata": {}
+  },
+  {
+    "id": "a64cbbb1-fca7-44f3-91dd-136b4a592c4f",
+    "role": "user",
+    "message": "\u001b[A",
+    "timestamp": "2025-07-12T17:41:59.368216",
+    "metadata": {}
+  },
+  {
+    "id": "5667fa00-e43c-4370-9f7f-aeb5cba85a87",
+    "role": "assistant",
+    "message": "I'm sorry, I didn't understand that input. Could you please rephrase your request?",
+    "timestamp": "2025-07-12T17:41:59.369879",
+    "metadata": {}
+  },
+  {
+    "id": "0cad9cee-9ab3-40d2-a9cf-b35d79307eba",
+    "role": "user",
+    "message": "AIzaSyDkLgmTiSdhrMWlA09XdECIPIGpG-OzbbM",
+    "timestamp": "2025-07-12T17:42:04.677527",
+    "metadata": {}
+  },
+  {
+    "id": "ca29c646-3ada-46f7-845e-356d552b5662",
+    "role": "assistant",
+    "message": "I'm sorry, I don't understand your request. Could you please rephrase it?  I'm here to help you manage your to-do list and have a chat, so let me know what you'd like to do!",
+    "timestamp": "2025-07-12T17:42:04.678961",
+    "metadata": {}
+  },
+  {
+    "id": "d64fc6b9-2088-4254-bfe1-048eff6012ac",
+    "role": "user",
+    "message": "Add buy groceries to my list",
+    "timestamp": "2025-07-12T17:42:17.077644",
+    "metadata": {}
+  },
+  {
+    "id": "96aa88c4-f764-42be-b3e7-86d30ee5976f",
+    "role": "assistant",
+    "message": "Hi there!  It seems \"buy groceries\" is already on your list.  Anything else I can help you with?",
+    "timestamp": "2025-07-12T17:42:17.080637",
+    "metadata": {}
+  },
+  {
+    "id": "4b48cd0b-a470-4da2-a22b-ca82d881746f",
+    "role": "user",
+    "message": "Add washing clothes to my list",
+    "timestamp": "2025-07-12T17:42:31.382018",
+    "metadata": {}
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "a76f7004-3aa5-4f64-821c-beae48137912",
+    "role": "user",
+    "message": "Hello",
+    "timestamp": "2025-07-12T17:04:51.536967",
+    "metadata": {}
+  },
+  {
+    "id": "55dac19e-643b-4dfc-8257-159f7c68eaae",
+    "role": "assistant",
+    "message": "Hi there!",
+    "timestamp": "2025-07-12T17:04:51.537451",
+    "metadata": {}
+  }
+]

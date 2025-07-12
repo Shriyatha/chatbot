@@ -1,0 +1,37 @@
+[
+  {
+    "id": "fa84e22a-cc9e-48c0-9fba-42fb849271c3",
+    "role": "user",
+    "message": "Add buy groceries to my list",
+    "timestamp": "2025-07-12T17:36:41.341586",
+    "metadata": {}
+  },
+  {
+    "id": "5e25aee2-d282-46d8-9168-ec25724930da",
+    "role": "assistant",
+    "message": "Perfect! I've added \"buy groceries\" to your to-do list.  Is there anything else I can help you with today?",
+    "timestamp": "2025-07-12T17:36:41.344171",
+    "metadata": {}
+  },
+  {
+    "id": "bf2433e7-aafc-41b8-8d64-abf45a87c05b",
+    "role": "user",
+    "message": "What's on my to-do list?",
+    "timestamp": "2025-07-12T17:37:24.102697",
+    "metadata": {}
+  },
+  {
+    "id": "d915d555-00fa-40f7-93b3-e49c44dfa40c",
+    "role": "assistant",
+    "message": "Here's your to-do list,  it currently contains:\n\n1. buy groceries (Priority: medium)",
+    "timestamp": "2025-07-12T17:37:24.106281",
+    "metadata": {}
+  },
+  {
+    "id": "4aadb08e-7f3c-4124-9e37-7ae346d4cb44",
+    "role": "user",
+    "message": "What's on my to-do list?",
+    "timestamp": "2025-07-12T17:40:59.071278",
+    "metadata": {}
+  }
+]

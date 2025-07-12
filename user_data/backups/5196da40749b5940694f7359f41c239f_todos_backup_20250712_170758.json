@@ -1,0 +1,23 @@
+{
+  "todos": [
+    {
+      "task": "Walk the dog",
+      "created": "2025-07-12T17:07:58.220134"
+    }
+  ],
+  "completed": [
+    {
+      "task": "Buy milk",
+      "created": "2025-07-12T17:07:50.540003"
+    },
+    {
+      "task": "Buy milk",
+      "created": "2025-07-12T17:07:50.540003"
+    },
+    {
+      "task": "Buy milk",
+      "created": "2025-07-12T17:07:58.220133"
+    }
+  ],
+  "last_updated": "2025-07-12T17:07:58.220811"
+}
