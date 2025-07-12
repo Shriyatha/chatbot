@@ -1,0 +1,12 @@
+[
+  {
+    "role": "user",
+    "message": "Add buy groceries to my list",
+    "timestamp": "2025-07-12T13:43:53.553581"
+  },
+  {
+    "role": "assistant",
+    "message": "Got it! I've added 'buy groceries' to your to-do list.",
+    "timestamp": "2025-07-12T13:43:53.555356"
+  }
+]
