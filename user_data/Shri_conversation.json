@@ -8,5 +8,95 @@
     "role": "assistant",
     "message": "Got it! I've added 'buy groceries' to your to-do list.",
     "timestamp": "2025-07-12T13:43:53.555356"
+  },
+  {
+    "role": "user",
+    "message": "Add buy groceries",
+    "timestamp": "2025-07-12T16:29:43.074387"
+  },
+  {
+    "role": "assistant",
+    "message": "Agent stopped due to iteration limit or time limit.",
+    "timestamp": "2025-07-12T16:29:43.075221"
+  },
+  {
+    "role": "user",
+    "message": "Hey there!",
+    "timestamp": "2025-07-12T16:32:37.247385"
+  },
+  {
+    "role": "assistant",
+    "message": "Hey there!  It's nice to meet you. What's your name?",
+    "timestamp": "2025-07-12T16:32:37.248966"
+  },
+  {
+    "role": "user",
+    "message": "Shri",
+    "timestamp": "2025-07-12T16:32:43.534543"
+  },
+  {
+    "role": "assistant",
+    "message": "Hello Shri!  It's nice to meet you. How can I help you today?",
+    "timestamp": "2025-07-12T16:32:43.535088"
+  },
+  {
+    "role": "user",
+    "message": "Add \"Finish LangChain tutorial\" to my to-do list.",
+    "timestamp": "2025-07-12T16:32:55.238153"
+  },
+  {
+    "role": "assistant",
+    "message": "Perfect! I've added \"Finish LangChain tutorial\" to your to-do list.  Let me know if you'd like to add anything else!",
+    "timestamp": "2025-07-12T16:32:55.238695"
+  },
+  {
+    "role": "user",
+    "message": "Add \"Email professor\" to my list.",
+    "timestamp": "2025-07-12T16:33:05.202255"
+  },
+  {
+    "role": "assistant",
+    "message": "Perfect! I've added \"Email professor\" to your to-do list.  Is there anything else I can help you with today?",
+    "timestamp": "2025-07-12T16:33:05.203250"
+  },
+  {
+    "role": "user",
+    "message": "What's on my to-do list?",
+    "timestamp": "2025-07-12T16:33:16.856263"
+  },
+  {
+    "role": "assistant",
+    "message": "Hi there!  Here's your to-do list:\n\n📝 Your Todo List:\n1. buy groceries\n2. Finish LangChain tutorial\n3. Email professor",
+    "timestamp": "2025-07-12T16:33:16.858240"
+  },
+  {
+    "role": "user",
+    "message": "Add \"Complete assignment\" to my to do list.",
+    "timestamp": "2025-07-12T16:34:09.483069"
+  },
+  {
+    "role": "assistant",
+    "message": "Hi there! Perfect! I've added \"Complete assignment\" to your to-do list.  Anything else I can help you with today?",
+    "timestamp": "2025-07-12T16:34:09.483613"
+  },
+  {
+    "role": "user",
+    "message": "Remove \"Complete assignment\" from my to-do list. I've already",
+    "timestamp": "2025-07-12T16:34:22.419423"
+  },
+  {
+    "role": "assistant",
+    "message": "Great job, [User's Name]! I've removed \"Complete assignment\" from your to-do list.  Anything else I can help you with today?",
+    "timestamp": "2025-07-12T16:34:22.420684"
+  },
+  {
+    "role": "user",
+    "message": "completed it.What's on my to-do list?",
+    "timestamp": "2025-07-12T16:34:31.543019"
+  },
+  {
+    "role": "assistant",
+    "message": "Here's what's on your to-do list:\n\n1. buy groceries\n2. Finish LangChain tutorial\n3. Email professor",
+    "timestamp": "2025-07-12T16:34:31.544852"
   }
 ]
