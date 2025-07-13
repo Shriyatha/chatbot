@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "task": "buy groceries",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-12T17:36:40.313236"
+    },
+    {
+      "task": "washing clothes",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-12T17:42:30.074769"
+    },
+    {
+      "task": "Finish LangChain tutorial",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-13T18:08:26.264117"
+    }
+  ],
+  "completed": [],
+  "last_updated": "2025-07-13T18:08:26.264158"
+}

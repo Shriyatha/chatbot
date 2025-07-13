@@ -1,6 +1,12 @@
 {
   "todos": [
     {
+      "task": "buy groceries",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-12T17:36:40.313236"
+    },
+    {
       "task": "washing clothes",
       "priority": "medium",
       "tags": [],
@@ -20,5 +26,5 @@
     }
   ],
   "completed": [],
-  "last_updated": "2025-07-13T18:09:26.339800"
+  "last_updated": "2025-07-13T18:08:39.710179"
 }

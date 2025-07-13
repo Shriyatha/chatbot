@@ -14,6 +14,8 @@ from memory_manager import MemoryManager
 # Load environment variables
 load_dotenv()
 
+import nest_asyncio
+nest_asyncio.apply()
 class TodoChatbot:
     def __init__(self, user_id: str = "default"):
         """Initialize the chatbot with memory and tools"""

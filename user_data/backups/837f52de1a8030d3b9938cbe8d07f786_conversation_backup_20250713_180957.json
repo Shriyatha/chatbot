@@ -229,12 +229,5 @@
     "message": "Ok bye!",
     "timestamp": "2025-07-13T18:09:57.792339",
     "metadata": {}
-  },
-  {
-    "id": "0d82a593-3c6a-400f-9bfa-565d7f2df70b",
-    "role": "assistant",
-    "message": "Goodbye! Have a wonderful day!",
-    "timestamp": "2025-07-13T18:09:57.797998",
-    "metadata": {}
   }
 ]
