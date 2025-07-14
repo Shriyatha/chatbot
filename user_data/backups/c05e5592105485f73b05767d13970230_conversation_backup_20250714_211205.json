@@ -159,26 +159,5 @@
     "message": "view tasks",
     "timestamp": "2025-07-14T21:12:02.556211",
     "metadata": {}
-  },
-  {
-    "id": "a9fb57e6-411b-4e9a-aa8b-c6ee6d4b7215",
-    "role": "assistant",
-    "message": "Hi Shri!  Here's your to-do list:\n\n📝 Your current to-do list:\n1. Finish LangChain tutorial (Priority: medium)",
-    "timestamp": "2025-07-14T21:12:05.054852",
-    "metadata": {}
-  },
-  {
-    "id": "45376675-c83f-4fbd-9cd5-e25a2f8e2820",
-    "role": "user",
-    "message": "Show my todos",
-    "timestamp": "2025-07-14T21:12:08.900616",
-    "metadata": {}
-  },
-  {
-    "id": "4c136dc6-7d5b-43a7-8ab9-e8c5ba602c50",
-    "role": "assistant",
-    "message": "Hi Shri! Here's what's on your to-do list:\n\n📝 Your current to-do list:\n1. Finish LangChain tutorial (Priority: medium)",
-    "timestamp": "2025-07-14T21:12:11.368083",
-    "metadata": {}
   }
 ]

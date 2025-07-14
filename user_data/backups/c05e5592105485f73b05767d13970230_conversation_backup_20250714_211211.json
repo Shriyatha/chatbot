@@ -173,12 +173,5 @@
     "message": "Show my todos",
     "timestamp": "2025-07-14T21:12:08.900616",
     "metadata": {}
-  },
-  {
-    "id": "4c136dc6-7d5b-43a7-8ab9-e8c5ba602c50",
-    "role": "assistant",
-    "message": "Hi Shri! Here's what's on your to-do list:\n\n📝 Your current to-do list:\n1. Finish LangChain tutorial (Priority: medium)",
-    "timestamp": "2025-07-14T21:12:11.368083",
-    "metadata": {}
   }
 ]

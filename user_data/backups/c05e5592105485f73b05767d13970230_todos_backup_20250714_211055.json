@@ -5,16 +5,14 @@
       "priority": "medium",
       "tags": [],
       "created": "2025-07-14T21:06:27.453390"
-    }
-  ],
-  "completed": [
+    },
     {
       "task": "buy groceries",
       "priority": "medium",
       "tags": [],
-      "created": "2025-07-14T21:10:30.047147",
-      "completed": "2025-07-14T21:10:55.237709"
+      "created": "2025-07-14T21:10:30.047147"
     }
   ],
-  "last_updated": "2025-07-14T21:10:55.237749"
+  "completed": [],
+  "last_updated": "2025-07-14T21:10:30.047185"
 }
