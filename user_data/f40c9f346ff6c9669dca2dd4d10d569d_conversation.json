@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ffaceb19-2092-471f-940e-5d342cc301f4",
+    "role": "user",
+    "message": "Show my todos",
+    "timestamp": "2025-07-13T18:12:53.182954",
+    "metadata": {}
+  },
+  {
+    "id": "08c57db0-4ca8-4d7b-8107-a9d0319e78e6",
+    "role": "assistant",
+    "message": "Here's your to-do list,  [User's Name]:\n\n📝 Active Tasks:\n1. buy groceries (Priority: medium)\n2. book doctor appointment (Priority: medium)\n3. walk the dog (Priority: medium)",
+    "timestamp": "2025-07-13T18:12:53.187104",
+    "metadata": {}
+  }
+]

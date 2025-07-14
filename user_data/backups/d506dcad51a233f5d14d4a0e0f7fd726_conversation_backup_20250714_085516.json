@@ -1,0 +1,23 @@
+[
+  {
+    "id": "24d26821-4b98-4904-9a49-b0c79a2646a0",
+    "role": "user",
+    "message": "Whats on my list?",
+    "timestamp": "2025-07-14T08:55:08.895059",
+    "metadata": {}
+  },
+  {
+    "id": "f0c98a81-c698-4c0b-a51a-7c6f534a0812",
+    "role": "assistant",
+    "message": "Your to-do list is currently empty.  Let me know what I can add!",
+    "timestamp": "2025-07-14T08:55:08.897872",
+    "metadata": {}
+  },
+  {
+    "id": "77846062-31d6-4d1b-baaf-6be03683b2e8",
+    "role": "user",
+    "message": "Ok",
+    "timestamp": "2025-07-14T08:55:16.013691",
+    "metadata": {}
+  }
+]

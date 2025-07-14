@@ -1,21 +1,120 @@
 import os
 import re
+import random
 import json
-from typing import Optional, Dict, Any
+from pathlib import Path
+from typing import List, Dict
 from dotenv import load_dotenv
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain.prompts import PromptTemplate
 from langchain_core.tools import Tool
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.memory import ConversationBufferWindowMemory
-from tools import TodoTools
-from memory_manager import MemoryManager
 
 # Load environment variables
 load_dotenv()
 
-import nest_asyncio
-nest_asyncio.apply()
+class MemoryManager:
+    def __init__(self, user_id: str):
+        """Initialize memory management for a specific user"""
+        self.user_id = user_id
+        self.user_dir = Path("user_data")
+        self.user_dir.mkdir(exist_ok=True)
+        
+        self.conversation_file = self.user_dir / f"{user_id}_conversation.json"
+        self.profile_file = self.user_dir / f"{user_id}_profile.json"
+        
+        # Initialize data structures with default values
+        self.conversation = []
+        self.profile = {"name": ""}
+        
+        self._load_data()
+
+    def _load_data(self):
+        """Load existing data from files"""
+        try:
+            if self.conversation_file.exists():
+                with open(self.conversation_file, 'r') as f:
+                    self.conversation = json.load(f)
+            
+            if self.profile_file.exists():
+                with open(self.profile_file, 'r') as f:
+                    self.profile = json.load(f)
+        except Exception as e:
+            print(f"Warning: Failed to load data - {str(e)}")
+            self.conversation = []
+            self.profile = {"name": ""}
+
+    def _save_data(self):
+        """Save data to files"""
+        try:
+            with open(self.conversation_file, 'w') as f:
+                json.dump(self.conversation, f)
+            
+            with open(self.profile_file, 'w') as f:
+                json.dump(self.profile, f)
+        except Exception as e:
+            print(f"Error saving data: {str(e)}")
+
+    def set_user_name(self, name: str):
+        """Store user name in profile"""
+        self.profile['name'] = name
+        self._save_data()
+
+    def get_user_name(self) -> str:
+        """Get stored user name"""
+        return self.profile.get('name', '')
+
+    def add_to_conversation(self, role: str, content: str):
+        """Add a message to conversation history"""
+        if not content or not isinstance(content, str):
+            return
+            
+        self.conversation.append({
+            'role': role,
+            'content': content
+        })
+        self._save_data()
+
+    def get_recent_conversation(self, n: int = 5) -> str:
+        """Get recent conversation as formatted string"""
+        recent = self.conversation[-n:]
+        return "\n".join(f"{msg['role']}: {msg['content']}" for msg in recent)
+
+class TodoTools:
+    def __init__(self, memory: MemoryManager):
+        self.memory = memory
+        self.todos = []
+        
+    def add_todo(self, task: str) -> str:
+        """Add a new task to the todo list"""
+        if not task or not isinstance(task, str):
+            return "Please provide a valid task"
+            
+        self.todos.append(task)
+        return f"Added: {task}"
+
+    def list_todos(self) -> str:
+        """List all current tasks"""
+        if not self.todos:
+            return "Your to-do list is empty"
+        return "\n".join(f"{i+1}. {task}" for i, task in enumerate(self.todos))
+
+    def remove_todo(self, task: str) -> str:
+        """Remove a task by index or text"""
+        try:
+            # Try to remove by index
+            index = int(task) - 1
+            if 0 <= index < len(self.todos):
+                removed = self.todos.pop(index)
+                return f"Removed: {removed}"
+        except ValueError:
+            # Remove by text
+            for i, t in enumerate(self.todos):
+                if t.lower() == task.lower():
+                    removed = self.todos.pop(i)
+                    return f"Removed: {removed}"
+        return "Task not found"
+
 class TodoChatbot:
     def __init__(self, user_id: str = "default"):
         """Initialize the chatbot with memory and tools"""
@@ -24,284 +123,221 @@ class TodoChatbot:
         self.todo_tools = TodoTools(self.memory)
         self.llm = self._initialize_llm()
         self.agent_executor = self._setup_agent()
+        self._initialize_responses()
+        
+    def _initialize_responses(self):
+        """Initialize response templates"""
+        self.responses = {
+            'greetings': [
+                "Hi {name}! How can I assist you today?",
+                "Hello {name}! What can I do for you?",
+                "Hey there {name}! Ready to tackle some tasks?"
+            ],
+            'empty_list': [
+                "Your to-do list is currently empty, {name}. Want to add something?",
+                "No tasks yet, {name}! Shall we create your first one?",
+                "All clear, {name}! Your list is ready for new tasks."
+            ],
+            'nothing_response': [
+                "No problem {name}! I'm here when you need me.",
+                "Understood {name}! Just say the word when you're ready.",
+                "All good {name}! Your list is waiting for when you need it."
+            ],
+            'goodbye': [
+                "Goodbye {name}! Your tasks are saved and ready for next time.",
+                "See you later {name}! Don't hesitate to return if you need help.",
+                "Bye {name}! Remember I'm here to help with your tasks."
+            ],
+            'affirmative': [
+                "Great {name}! What would you like to do?",
+                "Awesome {name}! How can I help?",
+                "Perfect {name}! What's next?"
+            ]
+        }
         
     def _initialize_llm(self) -> ChatGoogleGenerativeAI:
-        """Initialize Google Gemini LLM with error handling"""
+        """Initialize Google Gemini LLM"""
         google_api_key = os.getenv("GOOGLE_API_KEY")
         if not google_api_key:
-            print("\n🔑 Get a FREE API key from:")
-            print("1. Visit: https://aistudio.google.com/app/apikey")
-            print("2. Create API key (no credit card needed)")
-            print("3. Add to .env file as: GOOGLE_API_KEY=your_key_here")
-            raise ValueError("GOOGLE_API_KEY is required")
+            raise ValueError("GOOGLE_API_KEY is required in .env file")
         
-        try:
-            return ChatGoogleGenerativeAI(
-                model="gemini-1.5-flash",
-                google_api_key=google_api_key,
-                temperature=0.3,
-                max_retries=3,
-                request_timeout = 60,
-                max_output_tokens=1000
-            )
-        except Exception as e:
-            print(f"❌ Error initializing LLM: {str(e)}")
-            print("Please check your API key and internet connection.")
-            raise
+        return ChatGoogleGenerativeAI(
+            model="gemini-1.5-flash",
+            google_api_key=google_api_key,
+            temperature=0.3
+        )
     
     def _setup_agent(self) -> AgentExecutor:
-        """Setup the agent with tools and improved prompt"""
-        # Create tools with better error handling
+        """Setup the agent with tools"""
         tools = [
             Tool(
                 name="add_todo",
                 func=self._safe_add_todo,
-                description="Add a new task to the to-do list. Input should be the task description as a string."
+                description="Add a new task to the to-do list. Input should be the task description."
             ),
             Tool(
                 name="list_todos", 
                 func=self._safe_list_todos,
-                description="List all current tasks in the to-do list. No input needed - just use empty string."
+                description="List all current tasks in the to-do list."
             ),
             Tool(
                 name="remove_todo",
                 func=self._safe_remove_todo,
-                description="Remove a task from the to-do list. Input should be the task description or task number as a string."
-            ),
-            Tool(
-                name="get_conversation_context",
-                func=self._get_conversation_context,
-                description="Get recent conversation history for context. No input needed - just use empty string."
+                description="Remove a task from the to-do list. Input can be task number or description."
             )
         ]
         
-        # Enhanced prompt template
-        prompt = PromptTemplate.from_template("""You are a helpful personal assistant that manages to-do lists and has conversations.
+        prompt = PromptTemplate.from_template("""
+You are a helpful personal assistant that manages to-do lists.
 
-Your capabilities:
-1. Hold conversations and remember the user's name and past messages
-2. Manage a personal to-do list using these tools:
-   - add_todo: Add a new task to the to-do list
-   - list_todos: Show all current tasks
-   - remove_todo: Remove a task from the list
-   - get_conversation_context: Get conversation history for context
+Current Context:
+{context}
 
-Guidelines:
-- Be friendly, conversational, and natural
-- Remember the user's name and reference past conversations when relevant
-- When adding tasks, be enthusiastic: "Perfect! I've added '[task]' to your to-do list."
-- When removing tasks, be encouraging: "Great job! I've removed '[task]' from your list."
-- When listing tasks, show them in a clear numbered format
-- If a task doesn't exist when trying to remove it, suggest similar tasks if available
-- Keep responses concise but warm and helpful
-- Use the conversation context to maintain continuity
-
-You have access to the following tools:
+Available Tools:
 {tools}
 
-Tool names: {tool_names}
+Tool Names: {tool_names}
 
-Use the following format:
+Guidelines:
+- Always be friendly and helpful
+- Use the user's name when known
+- Keep responses clear and concise
+- For affirmative responses like 'yes', ask what they'd like to do next
 
-Question: the input question you must answer
-Thought: you should always think about what to do
-Action: the action to take, should be one of [{tool_names}]
-Action Input: the input to the action
-Observation: the result of the action
-... (this Thought/Action/Action Input/Observation can repeat N times)
-Thought: I now know the final answer
-Final Answer: the final answer to the original input question
+Use this format:
+
+Question: the user's input
+Thought: your analysis
+Action: tool to use
+Action Input: input for the tool
+Observation: tool result
+... (repeat as needed)
+Thought: final understanding
+Final Answer: your response
 
 Question: {input}
 Thought: {agent_scratchpad}""")
         
-        # Create the ReAct agent
         agent = create_react_agent(
             llm=self.llm,
             tools=tools,
             prompt=prompt
         )
         
-        # Create agent executor with improved settings
-        agent_executor = AgentExecutor(
+        return AgentExecutor(
             agent=agent,
             tools=tools,
             verbose=False,
-            handle_parsing_errors=True,
-            max_iterations=5,
-            return_intermediate_steps=False,
-            early_stopping_method="generate"
+            handle_parsing_errors=True
         )
+    
+    def _get_conversation_context(self) -> str:
+        """Get context for the agent"""
+        context = []
+        if name := self.memory.get_user_name():
+            context.append(f"User's name: {name}")
         
-        return agent_executor
+        if todos := self.todo_tools.list_todos():
+            context.append(f"Current todos:\n{todos}")
+        
+        if conv := self.memory.get_recent_conversation(3):
+            context.append(f"Recent conversation:\n{conv}")
+        
+        return "\n\n".join(context) if context else "No context available"
     
     def _safe_add_todo(self, task: str) -> str:
-        """Safely add a todo with error handling"""
+        """Safely add a todo"""
         try:
             return self.todo_tools.add_todo(task)
         except Exception as e:
-            return f"Sorry, I couldn't add that task. Error: {str(e)}"
+            return f"Error adding task: {str(e)}"
     
-    def _safe_list_todos(self, input_str: str = "") -> str:
-        """Safely list todos with error handling"""
+    def _safe_list_todos(self, _=None) -> str:
+        """Safely list todos"""
         try:
             return self.todo_tools.list_todos()
         except Exception as e:
-            return f"Sorry, I couldn't retrieve your tasks. Error: {str(e)}"
+            return f"Error listing tasks: {str(e)}"
     
     def _safe_remove_todo(self, task: str) -> str:
-        """Safely remove a todo with error handling"""
+        """Safely remove a todo"""
         try:
             return self.todo_tools.remove_todo(task)
         except Exception as e:
-            return f"Sorry, I couldn't remove that task. Error: {str(e)}"
-    
-    def _get_conversation_context(self, input_str: str = "") -> str:
-        """Get recent conversation history for context"""
-        try:
-            user_name = self.memory.get_user_name()
-            context = f"User name: {user_name}\n"
-            
-            # Get recent conversation if available
-            if hasattr(self.memory, 'get_recent_conversation'):
-                recent_conv = self.memory.get_recent_conversation(5)
-                if recent_conv:
-                    context += "Recent conversation:\n" + recent_conv
-            
-            return context
-        except Exception as e:
-            return f"Conversation context unavailable: {str(e)}"
+            return f"Error removing task: {str(e)}"
     
     def chat(self, user_input: str) -> str:
-        """Process user input and generate response with improved error handling"""
+        """Process user input"""
         try:
-            if not user_input.strip():
-                return "Please enter a message."
+            if not user_input or not isinstance(user_input, str):
+                return "Please enter a valid message."
             
-            # Handle simple greetings more naturally
-            greeting_patterns = [
-                r'^(hi|hello|hey|greetings?)!?$',
-                r'^(good\s+(morning|afternoon|evening))!?$',
-                r'^(what\'?s\s+up|how\'?s\s+it\s+going)!?$'
-            ]
+            user_name = self.memory.get_user_name() or "there"
+            input_lower = user_input.lower().strip()
             
-            if any(re.match(pattern, user_input.strip(), re.I) for pattern in greeting_patterns):
-                user_name = self.memory.get_user_name()
-                if user_name:
-                    return f"Hey {user_name}! What can I help you with today?"
-                else:
-                    return "Hey! What can I help you with today?"
+            # Handle greetings
+            if re.match(r'^(hi|hello|hey)', input_lower, re.I):
+                return random.choice(self.responses['greetings']).format(name=user_name)
             
-            # Handle exit commands
-            if user_input.lower().strip() in ['exit', 'quit', 'bye', 'goodbye']:
-                user_name = self.memory.get_user_name()
-                return f"Goodbye {user_name}! Your tasks and conversation history have been saved."
+            # Handle affirmative responses
+            if input_lower in ['yes', 'yeah', 'yep', 'sure']:
+                return random.choice(self.responses['affirmative']).format(name=user_name)
+            
+            # Handle exit
+            if input_lower in ['exit', 'quit', 'bye']:
+                return random.choice(self.responses['goodbye']).format(name=user_name)
             
             # Process with agent
-            response = self.agent_executor.invoke({"input": user_input})
+            response = self.agent_executor.invoke({
+                "input": user_input,
+                "context": self._get_conversation_context(),
+                "tool_names": ", ".join(t.name for t in self.agent_executor.tools)
+            })
             
-            # Store conversation in memory
+            # Store conversation
             self.memory.add_to_conversation("user", user_input)
-            self.memory.add_to_conversation("assistant", response["output"])
-            
-            return response["output"]
+            if response and "output" in response:
+                self.memory.add_to_conversation("assistant", response["output"])
+                return response["output"]
+            return "I didn't get that. Could you please rephrase?"
             
         except Exception as e:
-            error_msg = str(e)
-            print(f"Error in chat: {error_msg}")
-            
-            # Provide helpful error messages
-            if "API" in error_msg or "key" in error_msg.lower():
-                return "I'm having trouble connecting to the AI service. Please check your API key."
-            elif "network" in error_msg.lower() or "connection" in error_msg.lower():
-                return "I'm having network connectivity issues. Please try again."
-            else:
-                return "I'm having trouble processing that. Could you try rephrasing your request?"
-
-def validate_dependencies():
-    """Validate that required dependencies are available"""
-    required_modules = ['dotenv', 'langchain', 'langchain_google_genai']
-    missing = []
-    
-    for module in required_modules:
-        try:
-            __import__(module)
-        except ImportError:
-            missing.append(module)
-    
-    if missing:
-        print(f"❌ Missing required packages: {', '.join(missing)}")
-        print("Install them with: pip install python-dotenv langchain langchain-google-genai")
-        return False
-    
-    return True
+            return f"Sorry, I encountered an error. Please try again."
 
 def main():
-    """Main function to run the chatbot with improved error handling"""
-    print("📝 Personal To-Do Assistant")
+    """Run the chatbot"""
+    print("📝 Todo List Assistant")
     print("=" * 30)
     
-    # Validate dependencies
-    if not validate_dependencies():
-        return
-    
-    # Check for API key
     if not os.getenv("GOOGLE_API_KEY"):
-        print("❌ Please set up your Google API key in a .env file")
-        print("GOOGLE_API_KEY=your_key_here")
+        print("Please set GOOGLE_API_KEY in your .env file")
         return
     
-    try:
-        # Get user name with validation
-        user_name = input("What's your name? ").strip()
-        if not user_name:
-            user_name = "friend"
-        
-        # Validate user name
-        if len(user_name) > 50:
-            user_name = user_name[:50]
-            print(f"Using shortened name: {user_name}")
-        
-        # Initialize chatbot
-        print("🤖 Initializing your assistant...")
-        chatbot = TodoChatbot(user_name)
-        
-        # Store user name in memory
-        chatbot.memory.set_user_name(user_name)
-        
-        print(f"\n✅ Hi {user_name}! I'm your personal assistant. I can:")
-        print("• Have conversations and remember our chat history")
-        print("• Add tasks to your to-do list")
-        print("• Show your current tasks")
-        print("• Remove completed tasks")
-        print("• Type 'exit' to quit")
-        print("\n💡 Try saying: 'Add buy groceries to my list' or 'What's on my to-do list?'")
-        print("-" * 50)
-        
-        while True:
-            try:
-                user_input = input(f"\n{user_name}: ").strip()
-                
-                if user_input.lower() in ['exit', 'quit', 'bye', 'goodbye']:
-                    print(f"\n👋 Goodbye {user_name}! Your tasks and conversation history have been saved.")
-                    break
-                
-                if not user_input:
-                    continue
-                    
-                response = chatbot.chat(user_input)
-                print(f"🤖 Assistant: {response}")
-                
-            except KeyboardInterrupt:
-                print(f"\n\n👋 Goodbye {user_name}! Your data has been saved.")
-                break
-            except Exception as e:
-                print(f"⚠️ An error occurred: {str(e)}")
-                print("Please try again.")
+    user_name = input("What's your name? ").strip() or "friend"
+    chatbot = TodoChatbot(user_name.lower())
+    chatbot.memory.set_user_name(user_name)
     
-    except Exception as e:
-        print(f"❌ Failed to initialize chatbot: {str(e)}")
-        print("Please check your setup and try again.")
+    print(f"\nHello {user_name}! How can I help you today?")
+    print("Type 'exit' to quit\n" + "-" * 30)
+    
+    while True:
+        try:
+            user_input = input(f"{user_name}: ").strip()
+            if not user_input:
+                continue
+                
+            if user_input.lower() in ['exit', 'quit', 'bye']:
+                print(chatbot.chat(user_input))
+                break
+                
+            response = chatbot.chat(user_input)
+            print(f"Assistant: {response}")
+        except KeyboardInterrupt:
+            print("\nGoodbye!")
+            break
+        except Exception as e:
+            print(f"Error: {str(e)}")
+            continue
 
 if __name__ == "__main__":
     main()

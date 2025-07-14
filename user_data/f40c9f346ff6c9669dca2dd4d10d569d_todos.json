@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "task": "buy groceries",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-13T18:12:35.282247"
+    },
+    {
+      "task": "book doctor appointment",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-13T18:12:36.701713"
+    },
+    {
+      "task": "walk the dog",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-13T18:12:40.153423"
+    }
+  ],
+  "completed": [],
+  "last_updated": "2025-07-13T18:12:40.153467"
+}
