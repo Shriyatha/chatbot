@@ -12,19 +12,5 @@
     "message": "Hi Shri!  It looks like your to-do list is currently empty.  Would you like me to add anything to it?",
     "timestamp": "2025-07-14T21:06:05.655947",
     "metadata": {}
-  },
-  {
-    "id": "738a7f55-8664-4ad0-a3b0-4517b740578e",
-    "role": "user",
-    "message": "Add \"Finish LangChain tutorial\" to my to-do list.",
-    "timestamp": "2025-07-14T21:06:25.829615",
-    "metadata": {}
-  },
-  {
-    "id": "f849ec8f-a8c7-4b63-9e41-9927caea40df",
-    "role": "assistant",
-    "message": "Agent stopped due to iteration limit or time limit.",
-    "timestamp": "2025-07-14T21:06:29.931731",
-    "metadata": {}
   }
 ]

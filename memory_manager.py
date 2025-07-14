@@ -14,6 +14,9 @@ class MemoryManager:
         self.user_id = self._sanitize_user_id(user_id)
         self.data_dir = Path(data_dir)
         self.max_conversation_length = max_conversation_length
+        
+        self._access_count = 0          
+        self._last_error = None        
         self._setup_logging()
         
         self.conversation_file = self.data_dir / f"{self.user_id}_conversation.json"
@@ -22,9 +25,7 @@ class MemoryManager:
         
         self._initialize_directories()
         self._initialize_files()
-        self._access_count = 0
-        self._access_count = 0
-        self._last_error = None
+
     
     def _sanitize_user_id(self, user_id: str) -> str:
         return hashlib.sha256(user_id.encode()).hexdigest()[:32]

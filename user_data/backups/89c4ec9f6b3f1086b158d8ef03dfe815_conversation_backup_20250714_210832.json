@@ -1,0 +1,142 @@
+[
+  {
+    "id": "efff156b-620b-48fb-870a-a670173365a6",
+    "role": "user",
+    "message": "Add buy groceries to my list",
+    "timestamp": "2025-07-14T21:03:52.617563",
+    "metadata": {}
+  },
+  {
+    "id": "8bce7775-aff2-404d-9ab4-6d8e9318cd8e",
+    "role": "assistant",
+    "message": "Great, Sh! I've added \"buy groceries\" to your to-do list.  Is there anything else I can help you with today?",
+    "timestamp": "2025-07-14T21:03:56.430628",
+    "metadata": {}
+  },
+  {
+    "id": "cbcd0bd5-f7e9-4460-a418-efc6a20fd123",
+    "role": "user",
+    "message": "View all the taks",
+    "timestamp": "2025-07-14T21:04:15.571848",
+    "metadata": {}
+  },
+  {
+    "id": "a90128b7-0ebd-44dd-bb94-58146d5e1f7a",
+    "role": "assistant",
+    "message": "Okay Sh, here's your to-do list:\n\n📝 Your current to-do list:\n1. buy groceries (Priority: medium)\n\n\nIs there anything else I can help you with today?",
+    "timestamp": "2025-07-14T21:04:18.179164",
+    "metadata": {}
+  },
+  {
+    "id": "4a7fb92d-844d-47d5-871f-ca19ef639794",
+    "role": "user",
+    "message": "Just chat with me",
+    "timestamp": "2025-07-14T21:04:26.456327",
+    "metadata": {}
+  },
+  {
+    "id": "15317e27-19e1-40aa-901a-8ffc6f3e2874",
+    "role": "assistant",
+    "message": "Hey Sh!  Just chatting, huh?  How's your day going so far?  Anything interesting happening?",
+    "timestamp": "2025-07-14T21:04:27.639590",
+    "metadata": {}
+  },
+  {
+    "id": "9f6d4355-f2b2-4059-9f52-1c697a747056",
+    "role": "user",
+    "message": "Yeah Im goof",
+    "timestamp": "2025-07-14T21:04:34.178687",
+    "metadata": {}
+  },
+  {
+    "id": "ced7cc3e-22d9-4434-b8bb-7b1403c3ffff",
+    "role": "assistant",
+    "message": "Hey Sh!  \"Im goof\" -  Did you mean \"I'm good\"? Or is there something else you wanted to say?  Let me know if there's anything I can help you with, like adding something to your to-do list or just chatting more.",
+    "timestamp": "2025-07-14T21:04:35.627367",
+    "metadata": {}
+  },
+  {
+    "id": "758ecfff-0cb8-4f73-afe3-69541a5d8127",
+    "role": "user",
+    "message": "View taks",
+    "timestamp": "2025-07-14T21:06:48.622476",
+    "metadata": {}
+  },
+  {
+    "id": "c8a48c4b-3c1b-4af4-a0bd-90c78e58812a",
+    "role": "assistant",
+    "message": "Agent stopped due to iteration limit or time limit.",
+    "timestamp": "2025-07-14T21:06:51.971421",
+    "metadata": {}
+  },
+  {
+    "id": "50a24eaf-7961-471f-998f-379071363e27",
+    "role": "user",
+    "message": "Hello",
+    "timestamp": "2025-07-14T21:07:44.778523",
+    "metadata": {}
+  },
+  {
+    "id": "217ffb0c-efcb-4b55-9fc0-47b68142622f",
+    "role": "assistant",
+    "message": "Hello Sh!  How can I help you today?",
+    "timestamp": "2025-07-14T21:07:45.648566",
+    "metadata": {}
+  },
+  {
+    "id": "dd0817ca-28e9-499b-96b9-933c0487d9bb",
+    "role": "user",
+    "message": "Add buy groceries to my list",
+    "timestamp": "2025-07-14T21:07:51.983674",
+    "metadata": {}
+  },
+  {
+    "id": "49631072-af43-44b3-ac80-425625e5825d",
+    "role": "assistant",
+    "message": "Sh, \"buy groceries\" is already on your to-do list!  Anything else I can help you with?",
+    "timestamp": "2025-07-14T21:07:55.828165",
+    "metadata": {}
+  },
+  {
+    "id": "87f812cb-315e-4c93-a9b9-1ef0c955c78f",
+    "role": "user",
+    "message": "View tasks",
+    "timestamp": "2025-07-14T21:08:02.095789",
+    "metadata": {}
+  },
+  {
+    "id": "742ab8a4-16ab-46e7-84a9-59e372b647d7",
+    "role": "assistant",
+    "message": "Sh, here's your to-do list:\n\n1. buy groceries (Priority: medium)",
+    "timestamp": "2025-07-14T21:08:04.542156",
+    "metadata": {}
+  },
+  {
+    "id": "65d9f1f3-4073-4167-bd14-4ec7ab11224f",
+    "role": "user",
+    "message": "Add \"Email professor\" to my list.",
+    "timestamp": "2025-07-14T21:08:11.282132",
+    "metadata": {}
+  },
+  {
+    "id": "79e0b1bb-ece8-436c-8870-5754fdab2847",
+    "role": "assistant",
+    "message": "Great, Sh! I've added \"Email professor\" to your to-do list.  Anything else I can help you with?",
+    "timestamp": "2025-07-14T21:08:13.685619",
+    "metadata": {}
+  },
+  {
+    "id": "1bc2f0f0-c871-4c29-8d42-a65ca979951e",
+    "role": "user",
+    "message": "What's on my to-do list?",
+    "timestamp": "2025-07-14T21:08:21.472271",
+    "metadata": {}
+  },
+  {
+    "id": "99c79c42-b11d-4593-b3d6-7d360aa08d98",
+    "role": "assistant",
+    "message": "Okay Sh, here's what's on your to-do list:\n\n1. Email professor\n2. buy groceries (Priority: medium)",
+    "timestamp": "2025-07-14T21:08:23.986471",
+    "metadata": {}
+  }
+]

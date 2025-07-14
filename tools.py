@@ -160,14 +160,16 @@ class TodoTools:
             if not active and (not show_completed or not completed):
                 return "📝 Your todo list is empty"
             
-            result = ["📝 Active Tasks:"]
-            for i, task in enumerate(active, 1):
-                task_str = f"{i}. {task['task']}"
-                if "priority" in task:
-                    task_str += f" (Priority: {task['priority']})"
-                if "tags" in task and task["tags"]:
-                    task_str += f" [Tags: {', '.join(task['tags'])}]"
-                result.append(task_str)
+            result = []
+            if active:
+                result.append("📝 Your current to-do list:")
+                for i, task in enumerate(active, 1):
+                    task_str = f"{i}. {task['task']}"
+                    if "priority" in task:
+                        task_str += f" (Priority: {task['priority']})"
+                    if "tags" in task and task["tags"]:
+                        task_str += f" [Tags: {', '.join(task['tags'])}]"
+                    result.append(task_str)
             
             if show_completed and completed:
                 result.append("\n✅ Completed Tasks:")

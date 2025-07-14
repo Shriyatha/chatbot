@@ -19,12 +19,5 @@
     "message": "Add \"Finish LangChain tutorial\" to my to-do list.",
     "timestamp": "2025-07-14T21:06:25.829615",
     "metadata": {}
-  },
-  {
-    "id": "f849ec8f-a8c7-4b63-9e41-9927caea40df",
-    "role": "assistant",
-    "message": "Agent stopped due to iteration limit or time limit.",
-    "timestamp": "2025-07-14T21:06:29.931731",
-    "metadata": {}
   }
 ]

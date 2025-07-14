@@ -1,5 +1,12 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "task": "Finish LangChain tutorial",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-14T21:06:27.453390"
+    }
+  ],
   "completed": [],
-  "last_updated": "2025-07-14T08:59:54.058103"
+  "last_updated": "2025-07-14T21:06:27.453422"
 }
