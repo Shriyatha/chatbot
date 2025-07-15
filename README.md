@@ -15,40 +15,61 @@ This project implements an intelligent todo assistant that can:
 ### System Design
 
 ```mermaid
-graph TB
-    A[User Input] --> B[Streamlit Frontend]
-    B --> C[TodoChatbot Main Agent]
-    C --> D[LangChain ReAct Agent]
-    D --> E[Google Gemini LLM]
+graph TD
+    %% User & Frontend
+    A[User Input] --> B[Streamlit<br>Frontend]
+
+    %% Frontend to Agent
+    B --> C[TodoChatbot<br>Main Agent]
+
+    %% Agent & LLM
+    C --> D[LangChain<br>ReAct Agent]
+    D --> E[Google Gemini<br>LLM]
     D --> F[Tool Executor]
+
+    %% Tool Executor to Tools
     F --> G[TodoTools]
     F --> H[MemoryManager]
-    G --> I[JSON File Storage]
+
+    %% Tools and Memory to Storage
+    G --> I[JSON File<br>Storage]
     H --> I
-    I --> J[User Data Directory]
-    
-    subgraph "Agent Components"
+    I --> J[User Data<br>Directory]
+
+    %% Subgraphs
+    subgraph Frontend Layer
+        B
+    end
+
+    subgraph Agent Layer
         C
         D
         E
         F
     end
-    
-    subgraph "Tool Layer"
+
+    subgraph Tool Layer
         G
         H
     end
-    
-    subgraph "Storage Layer"
+
+    subgraph Storage Layer
         I
         J
     end
-    
+
+    %% Styling
     style A fill:#7f5af0,stroke:#333,stroke-width:2px,color:#fff
     style B fill:#2cb67d,stroke:#333,stroke-width:2px,color:#fff
     style C fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
-    style D fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
+    style D fill:#f4a261,stroke:#333,stroke-width:2px,color:#fff
     style E fill:#45b7d1,stroke:#333,stroke-width:2px,color:#fff
+    style F fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
+    style G fill:#f77f00,stroke:#333,stroke-width:2px,color:#fff
+    style H fill:#e76f51,stroke:#333,stroke-width:2px,color:#fff
+    style I fill:#adb5bd,stroke:#333,stroke-width:2px,color:#000
+    style J fill:#dee2e6,stroke:#333,stroke-width:2px,color:#000
+
 ```
 
 ### Component Architecture
@@ -233,7 +254,7 @@ llm = ChatGoogleGenerativeAI(
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd ai-todo-assistant
+   cd chatbot
    ```
 
 2. **Install dependencies**
@@ -460,21 +481,6 @@ agent_executor = AgentExecutor(
    - Animation performance
    - Accessibility compliance
 
-### Automated Testing (Future)
-```python
-# Test structure for future implementation
-def test_todo_operations():
-    # Test CRUD operations
-    pass
-
-def test_memory_persistence():
-    # Test data persistence
-    pass
-
-def test_agent_tool_calls():
-    # Test LLM tool integration
-    pass
-```
 
 ## 📝 Development Process
 
@@ -499,8 +505,8 @@ This project maintains regular commits showing development progress:
 # Core Dependencies
 streamlit>=1.28.0           # Web interface framework
 langchain>=0.1.0            # LLM orchestration
-langchain-google-genai>=0.0.6  # Gemini API integration
-python-dotenv>=1.0.0        # Environment variable management
+langchain-google-genai>=1.0.0  # Gemini API integration
+python-dotenv>=0.19.0       # Environment variable management
 nest-asyncio>=1.5.8         # Async event loop handling
 
 # Additional Dependencies
@@ -534,8 +540,6 @@ datetime                    # Timestamp handling
 - **Maintainability**: Modular, extensible architecture
 
 ## 👨‍💻 Author
-
-**Built for Snello SDE Internship Assignment**
 
 This project demonstrates:
 - Modern AI agent architecture design
