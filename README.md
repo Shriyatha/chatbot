@@ -10,68 +10,6 @@ This project implements an intelligent todo assistant that can:
 - Persist conversation history and todo data
 - Provide a modern, interactive web interface
 
-## 🏗️ Architecture
-
-### System Design
-
-```mermaid
-graph TD
-    %% User & Frontend
-    A[User Input] --> B[Streamlit<br>Frontend]
-
-    %% Frontend to Agent
-    B --> C[TodoChatbot<br>Main Agent]
-
-    %% Agent & LLM
-    C --> D[LangChain<br>ReAct Agent]
-    D --> E[Google Gemini<br>LLM]
-    D --> F[Tool Executor]
-
-    %% Tool Executor to Tools
-    F --> G[TodoTools]
-    F --> H[MemoryManager]
-
-    %% Tools and Memory to Storage
-    G --> I[JSON File<br>Storage]
-    H --> I
-    I --> J[User Data<br>Directory]
-
-    %% Subgraphs
-    subgraph Frontend Layer
-        B
-    end
-
-    subgraph Agent Layer
-        C
-        D
-        E
-        F
-    end
-
-    subgraph Tool Layer
-        G
-        H
-    end
-
-    subgraph Storage Layer
-        I
-        J
-    end
-
-    %% Styling
-    style A fill:#7f5af0,stroke:#333,stroke-width:2px,color:#fff
-    style B fill:#2cb67d,stroke:#333,stroke-width:2px,color:#fff
-    style C fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
-    style D fill:#f4a261,stroke:#333,stroke-width:2px,color:#fff
-    style E fill:#45b7d1,stroke:#333,stroke-width:2px,color:#fff
-    style F fill:#4ecdc4,stroke:#333,stroke-width:2px,color:#fff
-    style G fill:#f77f00,stroke:#333,stroke-width:2px,color:#fff
-    style H fill:#e76f51,stroke:#333,stroke-width:2px,color:#fff
-    style I fill:#adb5bd,stroke:#333,stroke-width:2px,color:#000
-    style J fill:#dee2e6,stroke:#333,stroke-width:2px,color:#000
-
-```
-
 ### Component Architecture
 
 ```
@@ -115,6 +53,10 @@ graph TD
 │  • Automatic backups                                      │
 └─────────────────────────────────────────────────────────────┘
 ```
+## 🖼️ UI Preview
+
+![AI Todo Assistant UI](ui1.png)
+![AI Todo Assistant UI](ui2.png)
 
 ## 🔧 Technical Implementation
 
