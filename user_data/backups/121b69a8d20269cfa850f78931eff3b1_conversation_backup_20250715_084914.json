@@ -1,0 +1,30 @@
+[
+  {
+    "id": "0bb144d5-29b2-4f27-a5f4-f1f766ba4702",
+    "role": "user",
+    "message": "Hii",
+    "timestamp": "2025-07-14T21:31:08.149158",
+    "metadata": {}
+  },
+  {
+    "id": "f951a147-68f6-4bcc-b01f-351934fd4573",
+    "role": "user",
+    "message": "I need to remember to call mom tomorrow",
+    "timestamp": "2025-07-15T08:49:04.166133",
+    "metadata": {}
+  },
+  {
+    "id": "d67c1b0b-304a-4e38-9749-c067e120b916",
+    "role": "assistant",
+    "message": "Agent stopped due to iteration limit or time limit.",
+    "timestamp": "2025-07-15T08:49:07.596985",
+    "metadata": {}
+  },
+  {
+    "id": "5058c9dc-9ac1-4e2f-bfd3-f17d0bac5243",
+    "role": "user",
+    "message": "Why",
+    "timestamp": "2025-07-15T08:49:11.086019",
+    "metadata": {}
+  }
+]

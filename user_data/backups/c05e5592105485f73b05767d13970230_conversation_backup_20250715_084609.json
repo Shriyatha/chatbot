@@ -187,12 +187,5 @@
     "message": "I need to remember to call mom tomorrow",
     "timestamp": "2025-07-14T21:28:55.093914",
     "metadata": {}
-  },
-  {
-    "id": "32bd7770-4304-4b42-9200-5493ebc02182",
-    "role": "user",
-    "message": "I need to remember to call mom tomorrow",
-    "timestamp": "2025-07-15T08:46:09.793845",
-    "metadata": {}
   }
 ]

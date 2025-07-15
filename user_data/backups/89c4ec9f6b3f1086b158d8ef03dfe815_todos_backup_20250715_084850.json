@@ -17,20 +17,8 @@
       "priority": "medium",
       "tags": [],
       "created": "2025-07-15T08:48:37.435891"
-    },
-    {
-      "task": "Call Mom",
-      "priority": "medium",
-      "tags": [],
-      "created": "2025-07-15T08:48:50.707371"
-    },
-    {
-      "task": "Call Mom tomorrow",
-      "priority": "medium",
-      "tags": [],
-      "created": "2025-07-15T08:48:52.008711"
     }
   ],
   "completed": [],
-  "last_updated": "2025-07-15T08:48:52.008733"
+  "last_updated": "2025-07-15T08:48:37.435929"
 }

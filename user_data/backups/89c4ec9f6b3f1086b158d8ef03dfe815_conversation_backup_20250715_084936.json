@@ -320,12 +320,5 @@
     "message": "Hello Sh!  How can I help you today?",
     "timestamp": "2025-07-15T08:49:31.448072",
     "metadata": {}
-  },
-  {
-    "id": "cc2b53d7-5035-47df-b13d-555b9f263e65",
-    "role": "user",
-    "message": "I need to remember to call mom tomorrow",
-    "timestamp": "2025-07-15T08:49:36.115880",
-    "metadata": {}
   }
 ]

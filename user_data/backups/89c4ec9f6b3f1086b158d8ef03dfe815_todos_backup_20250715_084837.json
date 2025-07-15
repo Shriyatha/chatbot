@@ -1,0 +1,18 @@
+{
+  "todos": [
+    {
+      "task": "buy groceries",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-14T21:03:55.194459"
+    },
+    {
+      "task": "Call Mom\"",
+      "priority": "medium",
+      "tags": [],
+      "created": "2025-07-15T08:48:36.430195"
+    }
+  ],
+  "completed": [],
+  "last_updated": "2025-07-15T08:48:36.430237"
+}

@@ -306,26 +306,5 @@
     "message": "Agent stopped due to iteration limit or time limit.",
     "timestamp": "2025-07-15T08:48:52.958744",
     "metadata": {}
-  },
-  {
-    "id": "4eac951c-5985-4568-9029-284ff16c7e64",
-    "role": "user",
-    "message": "Hello",
-    "timestamp": "2025-07-15T08:49:30.317708",
-    "metadata": {}
-  },
-  {
-    "id": "6d6f85cc-9396-456e-acba-83478df14201",
-    "role": "assistant",
-    "message": "Hello Sh!  How can I help you today?",
-    "timestamp": "2025-07-15T08:49:31.448072",
-    "metadata": {}
-  },
-  {
-    "id": "cc2b53d7-5035-47df-b13d-555b9f263e65",
-    "role": "user",
-    "message": "I need to remember to call mom tomorrow",
-    "timestamp": "2025-07-15T08:49:36.115880",
-    "metadata": {}
   }
 ]
